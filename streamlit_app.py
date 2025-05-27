@@ -29,12 +29,13 @@ if index and name and sex and submit:
  st.sidebar.write("Registro insertado correctamente")
 
 # ...
+# ✅ CORRECTO: función bien indentada
 def loadByName(name):
- names_ref = dbNames.where(u'name', u'==', name)
- currentName = None
-for myname in names_ref.stream():
- currentName = myname
-return currentName
+    names_ref = dbNames.where(u"name", u"==", name)
+    currentName = None
+    for myname in names_ref.stream():
+        currentName = myname
+    return currentName
 
 st.sidebar.subheader("Buscar nombre")
 nameSearch = st.sidebar.text_input("nombre")
