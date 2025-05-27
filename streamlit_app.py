@@ -53,18 +53,22 @@ if btnFiltrar:
 # ...
 st.sidebar.markdown("""---""")
 btnEliminar = st.sidebar.button("Eliminar")
+deletename = None  # ✅ Inicializar antes
+
 if btnEliminar:
- deletename = loadByName(nameSearch)
-if deletename is None:
- st.sidebar.write(f"{nameSearch} no existe")
-else:
- dbNames.document(deletename.id).delete()
- st.sidebar.write(f"{nameSearch} eliminado")
+    deletename = loadByName(nameSearch)
+    if deletename is None:
+        st.sidebar.write(f"{nameSearch} no existe")
+    else:
+        dbNames.document(deletename.id).delete()
+        st.sidebar.success(f"{nameSearch} eliminado")
 
 #...
 st.sidebar.markdown("""---""")
 newname = st.sidebar.text_input("Actualizar nombre")
 btnActualizar = st.sidebar.button("Actualizar")
+
+updatename = None  # ✅ Inicializar antes
 
 if btnActualizar:
  updatename = loadByName(nameSearch)
