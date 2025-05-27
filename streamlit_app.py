@@ -41,12 +41,14 @@ st.sidebar.subheader("Buscar nombre")
 nameSearch = st.sidebar.text_input("nombre")
 btnFiltrar = st.sidebar.button("Buscar")
 
+doc = None  # ✅ declarar doc antes para evitar error
+
 if btnFiltrar:
- doc = loadByName(nameSearch)
-if doc is None:
- st.sidebar.write("Nombre no existe")
-else:
- st.sidebar.write(doc.to_dict())
+    doc = loadByName(nameSearch)
+    if doc is None:
+        st.sidebar.write("Nombre no existe")
+    else:
+        st.sidebar.write(doc.to_dict())
 
 # ...
 st.sidebar.markdown("""---""")
